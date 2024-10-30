@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulação de Lista e Campo de Senha</title>
+</head>
+<body>
+    <div id="lista">
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+        </ul>
+    </div>
+
+    
+    <label for="senha">Senha:</label>
+    <input type="password" id="senha">
+    <button id="mostrarSenha">Mostrar</button>
+
+    
+    <div>
+        <button onclick="mostrarQuantidadeItens()">Mostrar Quantidade de Itens</button>
+        <button onclick="modificarSegundoItem()">Modificar Segundo Item</button>
+        <button onclick="adicionarNovoItem()">Adicionar Novo Item</button>
+        <button onclick="adicionarItemDinamico()">Adicionar Item Criado Dinamicamente</button>
+        <button onclick="alterarEstilo()">Alterar Estilo de Itens</button>
+        <button onclick="adicionarTextoAntesDepois()">Adicionar Texto Antes e Depois da Lista</button>
+        <button onclick="verificarAtributoRequired()">Verificar e Adicionar Atributo Required</button>
+    </div>
+
+    <script>
+        const lista = document.querySelector('#lista ul');
+
+        // Função 1: Exibe a quantidade de itens no console
+        function mostrarQuantidadeItens() {
+            console.log(`Quantidade de itens na lista: ${lista.children.length}`);
+        }
+
+        // Função 2: Modifica o texto do segundo item
+        function modificarSegundoItem() {
+            lista.children[1].innerText = "Item Modificado";
+        }
+
+        // Função 3: Adiciona um novo item com o texto "Novo Item"
+        function adicionarNovoItem() {
+            lista.innerHTML += "<li>Novo Item</li>";
+        }
+
+        // Função 4: Adiciona um item dinamicamente usando appendChild
+        function adicionarItemDinamico() {
+            const novoItem = document.createElement('li');
+            novoItem.innerText = "Item Criado Dinamicamente";
+            lista.appendChild(novoItem);
+        }
+
+        // Função 5: Alterna visibilidade do campo de senha ao clicar no botão
+        document.getElementById('mostrarSenha').addEventListener('click', function() {
+            const senha = document.getElementById('senha');
+            senha.type = senha.type === "password" ? "text" : "password";
+        });
+
+        // Função 6: Altera a cor do terceiro item e coloca o quarto item em negrito
+        function alterarEstilo() {
+            lista.children[2].style.color = "blue"; 
+            lista.children[3].style.fontWeight = "bold"; 
+        }
+
+        // Função 7: Adiciona texto antes e depois da lista
+        function adicionarTextoAntesDepois() {
+            lista.insertAdjacentHTML('beforebegin', "<< Antes da Lista >>");
+            lista.insertAdjacentHTML('afterend', "<< Depois da Lista >>");
+        }
+
+        // Função 8: Verifica se o campo possui o atributo required e o adiciona se não tiver
+        function verificarAtributoRequired() {
+            const campo = document.getElementById('senha');
+            if (!campo.hasAttribute('required')) {
+                campo.setAttribute('required', '');
+                console.log("Atributo 'required' foi adicionado ao campo de senha.");
+            } else {
+                console.log("O campo de senha já possui o atributo 'required'.");
+            }
+        }
+    </script>
+</body>
+</html>
