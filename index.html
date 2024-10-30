@@ -70,8 +70,8 @@
 
         // Função 7: Adiciona texto antes e depois da lista
         function adicionarTextoAntesDepois() {
-            lista.insertAdjacentHTML('beforebegin', "<< Antes da Lista >>");
-            lista.insertAdjacentHTML('afterend', "<< Depois da Lista >>");
+            lista.insertAdjacentHTML('beforebegin', " Antes da Lista ");
+            lista.insertAdjacentHTML('afterend', " Depois da Lista ");
         }
 
         // Função 8: Verifica se o campo possui o atributo required e o adiciona se não tiver
@@ -79,7 +79,7 @@
             const campo = document.getElementById('senha');
             if (!campo.hasAttribute('required')) {
                 campo.setAttribute('required', '');
-                console.log("Atributo 'required' foi adicionado ao campo de senha.");
+                console.log("'required' foi adicionado ao campo de senha.");
             } else {
                 console.log("O campo de senha já possui o atributo 'required'.");
             }
